@@ -24,5 +24,8 @@ Route::post('login', 'App\Http\Controllers\UserController@authenticate');
 Route::group(['middleware' => ['jwt.verify']], function () {
 
     Route::post('user', 'App\Http\Controllers\UserController@getAuthenticatedUser');
-    // Route::post('facturas', 'App\Http\Controllers\UserController@getFacturas');
+    Route::get('log/index', 'App\Http\Controllers\logController@index');
+    Route::post('log/store', 'App\Http\Controllers\logController@store');
+    Route::post('invoice/show', 'App\Http\Controllers\invoiceController@show');
+    Route::post('invoice/store', 'App\Http\Controllers\invoiceController@store');
 });
