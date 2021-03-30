@@ -47,13 +47,14 @@ class InvoiceController extends Controller
      */
     public function show(Request $request)
     {
-        // $invoice = invoice::findOrFail($request->input('id_cliente'));
-        // $invoices = invoice::all();
-        // var_dump($request->input('id_cliente'));
-        // die;
-        // $invoice = $invoices->find($request->input('id_cliente'));
-        $invoice = invoice::where('id_invoice', $request->input('id_invoice'))->get();
-        return response()->json(['factura' => $invoice]);
+        if ($request->input('type_id') !="" && $request->input('id_cliente') != "" ) {
+            $invoice = invoice::where('type_id', $request->input('type_id'))->where('id_cliente', $request->input('id_cliente'))->get();
+            return response()->json(['factura' => $invoice]);
+        }else if($request->input('ref_pay') != ""){
+            $invoice = invoice::where('ref_pay', $request->input('ref_pay'))->get();
+            return response()->json(['factura' => $invoice]);
+        }
+        
     }
 
     /**
