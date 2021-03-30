@@ -9,6 +9,6 @@ class invoice extends Model
 {
     use HasFactory;
     protected $table = 'invoices';
-    protected $fillable = ['id_invoice', 'description', 'amount','id_cliente', 'names', 'phone', 'total_due', 'init_amount'];
+    protected $fillable = ['ref_pay', 'description', 'fee', 'due', 'credit_value', 'type_id', 'id_cliente', 'names', 'phone', 'email'];
     protected $hidden = array('created_at', 'updated_at');
 }

@@ -20,7 +20,7 @@ class CreateInvoicesTable extends Migration
             $table->float('fee')->nullable();
             $table->float('due')->nullable();
             $table->float('credit_value')->nullable();
-            $table->string('type_id')->unique();
+            $table->string('type_id')->nullable();
             $table->string('id_cliente')->unique();
             $table->string('names')->nullable();
             $table->string('phone');
