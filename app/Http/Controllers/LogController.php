@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\invoice;
 use App\Models\log;
 use Illuminate\Http\Request;
 
@@ -36,6 +37,10 @@ class LogController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->x_response === "Aceptada") {
+            invoice::where('x_id_invoice', $request->x_id_invoice)->update(['delayed' => 1]);
+        }
+        
         $log = log::create($request->all());
         return response()->json($log, 201);
     }

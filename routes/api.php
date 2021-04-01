@@ -20,12 +20,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('register', 'App\Http\Controllers\UserController@register');
 Route::post('login', 'App\Http\Controllers\UserController@authenticate');
+Route::post('confirmation/store', 'App\Http\Controllers\ConfirmationController@store');
 
 Route::group(['middleware' => ['jwt.verify']], function () {
 
     Route::post('user', 'App\Http\Controllers\UserController@getAuthenticatedUser');
-    Route::get('log/index', 'App\Http\Controllers\logController@index');
-    Route::post('log/store', 'App\Http\Controllers\logController@store');
-    Route::post('invoice/show', 'App\Http\Controllers\invoiceController@show');
-    Route::post('invoice/store', 'App\Http\Controllers\invoiceController@store');
+    Route::get('log/index', 'App\Http\Controllers\LogController@index');
+    Route::post('log/store', 'App\Http\Controllers\LogController@store');
+    Route::post('invoice/show', 'App\Http\Controllers\InvoiceController@show');
+    Route::post('invoice/store', 'App\Http\Controllers\InvoiceController@store');
+
 });
