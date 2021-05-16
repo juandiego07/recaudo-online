@@ -49,10 +49,10 @@ class InvoiceController extends Controller
     {
         if ($request->input('type_id') !="" && $request->input('id_cliente') != "" ) {
             $invoice = invoice::where('type_id', $request->input('type_id'))->where('id_cliente', $request->input('id_cliente'))->get();
-            return response()->json(['factura' => $invoice]);
+            return response()->json(['factura' => $invoice], 201);
         }else if($request->input('ref_pay') != ""){
             $invoice = invoice::where('ref_pay', $request->input('ref_pay'))->get();
-            return response()->json(['factura' => $invoice]);
+            return response()->json(['factura' => $invoice], 201);
         }
         
     }

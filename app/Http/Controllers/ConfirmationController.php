@@ -58,24 +58,24 @@ class ConfirmationController extends Controller
         if ($x_signature == $signature) {
             /*Si la firma esta bien podemos verificar los estado de la transacción*/
 
-            $log = Confirmation::create($request->all());
-            return response()->json($log, 201);
+            // $log = Confirmation::create($request->all());
+            // return response()->json($log, 201);
 
-            // $x_cod_response = $_REQUEST['x_cod_response'];
-            // switch ((int) $x_cod_response) {
-            //     case 1:
-            //         return response()->json(['Response' => 'Trnasacción Aceptada'], 201);
-            //         break;
-            //     case 2:
-            //         return response()->json(['Response' => 'Trnasacción Rechazada'], 202);
-            //         break;
-            //     case 3:
-            //         return response()->json(['Response' => 'Trnasacción Pendiente'], 203);
-            //         break;
-            //     case 4:
-            //         return response()->json(['Response' => 'Trnasacción Fallida'], 204);
-            //         break;
-            // }
+            $x_cod_response = $_REQUEST['x_cod_response'];
+            switch ((int) $x_cod_response) {
+                case 1:
+                    return response()->json(['Response' => 'Trnasacción Aceptada'], 201);
+                    break;
+                case 2:
+                    return response()->json(['Response' => 'Trnasacción Rechazada'], 202);
+                    break;
+                case 3:
+                    return response()->json(['Response' => 'Trnasacción Pendiente'], 203);
+                    break;
+                case 4:
+                    return response()->json(['Response' => 'Trnasacción Fallida'], 204);
+                    break;
+            }
         } else {
             die("Firma no valida");
         }
